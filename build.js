@@ -39,7 +39,7 @@ if (!fs.existsSync(distDir)) {
 }
 
 // 배포용 파일들 복사
-const filesToCopy = ['style.css', 'app.js', 'routes.js'];
+const filesToCopy = ['style.css', 'app.js', 'routes.js', 'favicon.svg'];
 
 filesToCopy.forEach(file => {
     const srcPath = path.join(__dirname, file);
