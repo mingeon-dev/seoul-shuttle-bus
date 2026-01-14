@@ -58,6 +58,30 @@ header h1 {
     flex-wrap: wrap;
 }
 
+.district-select {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    color: #667eea;
+}
+
+.district-select:hover {
+    border-color: #667eea;
+}
+
+.district-select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
 .route-select {
     flex: 1;
     min-width: 200px;
@@ -164,6 +188,118 @@ header h1 {
     border-top: 2px solid #e0e0e0;
 }
 
+/* 출발 시간표 스타일 */
+.schedule-container {
+    margin: 15px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.next-departure-info {
+    padding: 10px 12px;
+    background: white;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+}
+
+.next-time {
+    margin-left: 8px;
+}
+
+.schedule-section {
+    margin-top: 10px;
+}
+
+.schedule-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.time-group {
+    background: white;
+    padding: 10px 12px;
+    border-radius: 6px;
+}
+
+.time-group-label {
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 0.85em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.time-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+    gap: 6px;
+}
+
+.time-card {
+    padding: 6px 8px;
+    background: white;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.85em;
+    transition: all 0.2s;
+    position: relative;
+    cursor: default;
+}
+
+.time-card:hover {
+    border-color: #667eea;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.time-card.next-departure {
+    border-color: transparent;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transform: scale(1.03);
+    font-size: 0.9em;
+}
+
+.time-card.past {
+    opacity: 0.5;
+    background: #f5f5f5;
+}
+
+.next-badge {
+    display: block;
+    font-size: 0.65em;
+    margin-top: 2px;
+    opacity: 0.9;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .time-cards {
+        grid-template-columns: repeat(auto-fill, minmax(55px, 1fr));
+        gap: 5px;
+    }
+    
+    .time-card {
+        padding: 5px 6px;
+        font-size: 0.8em;
+    }
+    
+    .next-departure-info {
+        font-size: 0.9em;
+        padding: 8px 10px;
+    }
+    
+    .schedule-container {
+        padding: 12px;
+        margin: 12px 0;
+    }
+}
+
 @media (max-width: 768px) {
     header h1 {
         font-size: 1.8em;
@@ -176,6 +312,14 @@ header h1 {
     .controls {
         padding: 15px 20px;
         gap: 10px;
+        flex-wrap: wrap;
+    }
+    
+    .district-select {
+        flex: 1;
+        min-width: 0;
+        font-size: 14px;
+        padding: 10px 12px;
     }
     
     .route-select {
@@ -186,8 +330,9 @@ header h1 {
     }
     
     .location-btn {
-        flex-shrink: 0;
+        width: 100%;
         padding: 10px 16px;
         font-size: 14px;
+        order: 3; /* 드롭다운 다음에 배치 */
     }
 }
