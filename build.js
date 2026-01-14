@@ -28,8 +28,8 @@ let indexContent = fs.readFileSync(indexPath, 'utf8');
 
 // API 키 주입
 indexContent = indexContent.replace(
-    /ncpClientId=YOUR_NAVER_MAP_API_KEY/g,
-    `ncpClientId=${naverMapApiKey}`
+    /ncpKeyId=YOUR_NAVER_MAP_API_KEY/g,
+    `ncpKeyId=${naverMapApiKey}`
 );
 
 // dist 디렉토리 생성 (없는 경우)

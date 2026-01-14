@@ -60,7 +60,6 @@ function initMap() {
     
     // 이벤트 리스너 설정
     document.getElementById('routeSelect').addEventListener('change', handleRouteSelect);
-    document.getElementById('refreshBtn').addEventListener('click', refreshMap);
 }
 
 // 노선 선택 드롭다운 채우기
