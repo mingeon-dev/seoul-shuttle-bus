@@ -31,7 +31,7 @@ const shuttleRoutes = [
         name: '송파구 임시2번',
         color: '#4ECDC4',
         stations: [
-            { stationId: null, name: '임시정류소', lat: 37.510832, lng: 127.074364 },
+            { stationId: null, name: '임시정류소 (종합운동장역 2번출구)', lat: 37.510832, lng: 127.074364 },
             { stationId: '24157', name: '종합운동장사거리', lat: 37.5116128425, lng: 127.0795554593 },
             { stationId: '24158', name: '잠실새내역4번출구', lat: 37.5114453148, lng: 127.0843635917 },
             { stationId: '24436', name: '새마을시장', lat: 37.5088577164, lng: 127.0867330139 },
@@ -100,7 +100,7 @@ const shuttleRoutes = [
             { stationId: '24329', name: '가락현대1차아파트정문', lat: 37.4927542422, lng: 127.1289549161 },
             { stationId: '24345', name: '가락쌍용1차아파트', lat: 37.4943836148, lng: 127.1304312751 },
             { stationId: '24357', name: '가락동극동아파트', lat: 37.4962572557, lng: 127.1318312665 },
-            { stationId: null, name: '임시정류소', lat: 37.497864, lng: 127.133609},
+            { stationId: null, name: '임시정류소 (테라펠리체)', lat: 37.497864, lng: 127.133609},
             { stationId: '24267', name: '우창아파트', lat: 37.4997505359, lng: 127.1360639933 },
             { stationId: '24269', name: '오금동사거리', lat: 37.502775, lng: 127.138162 },
             { stationId: '24255', name: '거여초등학교', lat: 37.50241, lng: 127.140012 },
@@ -180,7 +180,7 @@ const shuttleRoutes = [
         color: '#4D96FF',
         stations: [
             { stationId: '24571', name: '잠실나루역', lat: 37.520416, lng: 127.104677 },
-            { stationId: null, name: '임시정류소', lat: 37.518685, lng: 127.105661 },
+            { stationId: null, name: '임시정류소 (잠실르엘)', lat: 37.518685, lng: 127.105661 },
             { stationId: '24126', name: '잠실진주아파트', lat: 37.5196, lng: 127.11125 },
             { stationId: '24396', name: '몽촌토성역.한성백제역', lat: 37.5170403874, lng: 127.1136027575 },
             { stationId: '24217', name: '올림픽베어스타운아파트앞', lat: 37.5148280531, lng: 127.1191035641 },
