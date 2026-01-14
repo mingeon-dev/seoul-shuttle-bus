@@ -1,0 +1,40 @@
+# API 키 및 민감한 정보
+*.env
+.env.local
+.env.*.local
+config.local.js
+
+# API 키가 포함된 파일 (로컬 개발용)
+index.local.html
+fetch-stations.local.js
+
+# 로컬 개발 가이드 및 보안 문서 (공개하지 않음)
+README.local.md
+SECURITY.md
+API_KEYS.md
+
+# 로그 파일
+*.log
+npm-debug.log*
+
+# 운영체제 파일
+.DS_Store
+Thumbs.db
+
+# 에디터 설정
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node 모듈 (npm 사용 시)
+node_modules/
+
+# 빌드 결과물
+dist/
+build/
+
+# 임시 파일
+*.tmp
+*.temp

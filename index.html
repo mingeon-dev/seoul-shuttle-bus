@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울 무료 셔틀 버스 노선 안내</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=YOUR_NAVER_MAP_API_KEY"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚌 서울 무료 셔틀 버스 노선 안내</h1>
+            <p class="subtitle">서울 버스 파업 대응 무료 셔틀 버스 노선을 확인하세요</p>
+        </header>
+        
+        <div class="controls">
+            <select id="routeSelect" class="route-select">
+                <option value="">전체 노선 보기</option>
+            </select>
+        </div>
+        
+        <div id="map" class="map"></div>
+        
+        <div class="info-panel">
+            <h2>노선 정보</h2>
+            <div id="routeInfo" class="route-info">
+                노선을 선택하면 상세 정보가 표시됩니다.
+            </div>
+        </div>
+    </div>
+    
+    <script src="routes.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
