@@ -4,6 +4,7 @@ let map;
 let markers = [];
 let polylines = [];
 let currentRouteId = null;
+let currentLocationMarker = null;
 
 // 직선 폴리라인 생성
 function createSimplePolyline(stations, routeColor) {
@@ -60,6 +61,7 @@ function initMap() {
     
     // 이벤트 리스너 설정
     document.getElementById('routeSelect').addEventListener('change', handleRouteSelect);
+    document.getElementById('currentLocationBtn').addEventListener('click', showCurrentLocation);
 }
 
 // 노선 선택 드롭다운 채우기
@@ -280,24 +282,94 @@ function handleRouteSelect(event) {
     updateRouteInfo(route);
 }
 
+// 현재 위치 표시
+function showCurrentLocation() {
+    const btn = document.getElementById('currentLocationBtn');
+    btn.disabled = true;
+    btn.textContent = '📍 위치 확인 중...';
+    
+    if (!navigator.geolocation) {
+        alert('이 브라우저는 위치 서비스를 지원하지 않습니다.');
+        btn.disabled = false;
+        btn.textContent = '📍 내 위치';
+        return;
+    }
+    
+    navigator.geolocation.getCurrentPosition(
+        function(position) {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            const location = new naver.maps.LatLng(lat, lng);
+            
+            // 기존 현재 위치 마커 제거
+            if (currentLocationMarker) {
+                currentLocationMarker.setMap(null);
+            }
+            
+            // 현재 위치 마커 생성
+            currentLocationMarker = new naver.maps.Marker({
+                position: location,
+                map: map,
+                icon: {
+                    content: `
+                        <div style="
+                            width: 40px;
+                            height: 40px;
+                            background: #4285F4;
+                            border: 3px solid white;
+                            border-radius: 50%;
+                            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            font-size: 20px;
+                        ">📍</div>
+                    `,
+                    anchor: new naver.maps.Point(20, 20)
+                },
+                zIndex: 1000
+            });
+            
+            // 현재 위치로 지도 이동
+            map.setCenter(location);
+            map.setZoom(16);
+            
+            btn.disabled = false;
+            btn.textContent = '📍 내 위치';
+        },
+        function(error) {
+            let errorMessage = '위치를 가져올 수 없습니다.';
+            
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    errorMessage = '위치 권한이 거부되었습니다. 브라우저 설정에서 위치 권한을 허용해주세요.';
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    errorMessage = '위치 정보를 사용할 수 없습니다.';
+                    break;
+                case error.TIMEOUT:
+                    errorMessage = '위치 요청 시간이 초과되었습니다.';
+                    break;
+            }
+            
+            alert(errorMessage);
+            btn.disabled = false;
+            btn.textContent = '📍 내 위치';
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 0
+        }
+    );
+}
+
 // 지도 초기화 (마커 및 폴리라인 제거)
 function clearMap() {
     markers.forEach(marker => marker.setMap(null));
     polylines.forEach(polyline => polyline.setMap(null));
     markers = [];
     polylines = [];
-}
-
-// 지도 새로고침
-function refreshMap() {
-    if (currentRouteId) {
-        const route = shuttleRoutes.find(r => r.id === currentRouteId);
-        if (route) {
-            handleRouteSelect({ target: { value: currentRouteId } });
-        }
-    } else {
-        displayAllRoutes();
-    }
 }
 
 // 노선 정보 업데이트

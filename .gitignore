@@ -6,6 +6,7 @@ config.local.js
 
 # API 키가 포함된 파일 (로컬 개발용)
 index.local.html
+fetch-stations.js
 fetch-stations.local.js
 
 # 로컬 개발 가이드 및 보안 문서 (공개하지 않음)
